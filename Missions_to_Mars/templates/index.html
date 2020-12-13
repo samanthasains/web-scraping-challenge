@@ -5,18 +5,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Missin to Mars</title>
+  <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
   <div class="container-fluid">
     <div class="jumbotron text-center">
-      <h1>Mission to Mars.</h1>
+      <h1>Mission to Mars</h1>
       <p><a class="btn btn-primary btn-lg" href="../scrape" role="button">Scrape New Data</a></p>
     </div>
-   
   </div>
+
+  
+  <!-- Creates the Overall Grid -->
+    <div class="container">
+
+    <!-- Row 1 -->
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Latest Mars News</h2>
+        <h3> {{ mars_dict.news_title }} </h3>
+        <p> {{ mars_dict.news_para }} </p>
+      </div>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="row">
+      <div class="col-md-6">
+          <h3>Featured Mars Image</h3>
+          </br>
+            <img src="{{mars_dict.featured_image_url}}" alt="Featured Mars Image">
+          <br>
+      </div>
+      <div class="col-md-6">
+          <h4>Mars Facts</h4>             
+          <br>
+            {{ mars_dict.fact_table}}
+      </div>
+    </div>
+    
+    <!-- Row 3 --> 
+    <div class="row">
+          <div class="col-md-8 offset-4">
+            <h3 class="align-items-center">Mars hemispheres</h3>  
+          </div>
+        </div>
+        </br>
+    <div class="row">       
+      {% for hemisphere in mars_dict.hemisphere_images %} 
+            <div class="col-6 border">
+              </br>
+                  <div>
+                     <img width="512 px" height="512 px" src="{{ hemisphere.img_url | safe }}">
+                    </div>
+
+                    <div>
+                      <h4> {{ hemisphere.title | safe }} </h4>  
+                    </div>
+            
+              </div>
+                {% endfor %}
+    </div>
   </div>
 </body>
 

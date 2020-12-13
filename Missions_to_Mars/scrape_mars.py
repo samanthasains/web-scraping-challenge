@@ -8,7 +8,6 @@ import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
 import requests
-import pymongo
 
 def init_browser():
     # @NOTE: Replace the path with your actual path to the chromedriver
@@ -96,7 +95,7 @@ def scrape():
         
         except:
             print("Scraping Complete")
-            
+
     #Write all to dictionary
     mars_dict={
         "news_title": news_title,
@@ -105,4 +104,8 @@ def scrape():
         "fact_table": mars_facts,
         "hemisphere_images": hemisphere_dict}
     
+    # Close the browser after scraping
+    browser.quit()
+            
+
     return mars_dict
