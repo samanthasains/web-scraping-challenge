@@ -48,7 +48,7 @@ def scrape():
     #Get results
     results=pd.read_html(url)
     #Write facts table to html
-    mars_facts=results[0].to_html()
+    mars_facts=results[0].to_html(index=False, header=False)
     
     #Set url for astrogeology
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
